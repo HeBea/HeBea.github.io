@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="我和你本应该，各自好各自坏">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://www.hebeto.com/tags/index.html">
+<meta name="description" content="​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于keras深度学习识别奇偶数">
+<meta property="og:url" content="http://www.hebeto.com/2019/08/15/keras/index.html">
 <meta property="og:site_name" content="南南瓜瓜瓜の博客">
-<meta property="og:description" content="我和你本应该，各自好各自坏">
+<meta property="og:description" content="​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T13:25:44.322Z">
+<meta property="og:updated_time" content="2019-08-15T15:39:00.833Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="我和你本应该，各自好各自坏">
+<meta name="twitter:title" content="基于keras深度学习识别奇偶数">
+<meta name="twitter:description" content="​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hebeto.com/tags/">
+  <link rel="canonical" href="http://www.hebeto.com/2019/08/15/keras/">
 
 
 
 
 
-  <title>标签 | 南南瓜瓜瓜の博客</title>
+  <title>基于keras深度学习识别奇偶数 | 南南瓜瓜瓜の博客</title>
   
 
 
@@ -242,33 +242,178 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hebeto.com/2019/08/15/keras/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="南南瓜瓜瓜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南南瓜瓜瓜の博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">基于keras深度学习识别奇偶数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-15T23:19:36+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基<a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">Tensorflow</a>、<a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a>以及<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a>后端。<a id="more"></a>Keras 为支持快速实验而生，能够把你的idea迅速转换为结果。Keras的优点是友好、快速，官方说5分钟上手，（不知道是上手到啥程度，反正我是5分钟官方介绍都没看完）水几篇文章先，免得尴尬。</p>
+<p>‘’’</p>
+<p>from keras.models import Sequential<br>from keras.layers import Dense<br>import numpy as np</p>
+<p>x_data = []<br>y_data = []</p>
+<p>#生成训练数据<br>for i in range(256):<br>    if i % 2 == 0:<br>        y_data.append(0)<br>    else:<br>        y_data.append(1)<br>    temp = []<br>    for j in range(8):<br>        temp.append(i&amp;0x01)<br>        i = i &gt;&gt; 1<br>    x_data.append(temp)<br>x_train = np.array(x_data)<br>y_train = np.array(y_data).T</p>
+<p>#最简单的序贯模型，序贯模型是多个网络层的线性堆叠<br>simple_model=Sequential()</p>
+<p>#dense层为全连接层</p>
+<p>#第一层隐含层为全连接层 5个神经元 输入数据的维度为8<br>simple_model.add(Dense(5,input_dim=8,activation=’relu’))</p>
+<p>#第二个隐含层 4个神经元<br>simple_model.add(Dense(2,activation=’relu’))</p>
+<p>#输出层为1个神经元<br>simple_model.add(Dense(1,activation=’sigmoid’))</p>
+<p>#编译模型,训练模型之前需要编译模型</p>
+<p>#编译模型的三个参数：优化器、损失函数、指标列表<br>simple_model.compile(optimizer=’sgd’,loss=’mean_squared_error’)</p>
+<p>#训练网络 2000次</p>
+<p>#Keras以Numpy数组作为输入数据和标签的数据类型。训练模型一般使用fit函数<br>simple_model.fit(x_train,y_train,epochs=1000)</p>
+<p>#应用模型 进行预测</p>
+<p>while True:<br>    #输入一个0-255的数 判别其奇偶性<br>    print(“input:”)<br>    test = int(input())<br>    t = test<br>    test_list = []<br>    for i in range(8):<br>        test_list.append(test &amp; 0x01)<br>        test = test &gt;&gt; 1<br>    #print(test_list)<br>    #输入为二维列表<br>    l = []<br>    l.append(test_list)<br>    result = simple_model.predict_classes(np.array(l))<br>    if result[0] == 0:<br>        print(“结果：” +str(t)+”是偶数”)<br>    else:<br>        print(“结果：” +str(t)+”是奇数”)</p>
+<p>‘’’</p>
+<p>排版后面在改吧，0-255的数识别其奇偶性，输入更大的也可以识别出来（因为只取输入的低8位），深度学习用来识别奇偶数是不是有点大材小用了…</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="南南瓜瓜瓜 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/15/MyFirstTitle/" rel="next" title="第一篇文章终于发布啦!">
+                <i class="fa fa-chevron-left"></i> 第一篇文章终于发布啦!
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 

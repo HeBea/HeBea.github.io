@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hebeto.com/"/>
-  <updated>2019-08-15T09:44:12.370Z</updated>
+  <updated>2019-08-15T15:39:00.833Z</updated>
   <id>http://www.hebeto.com/</id>
   
   <author>
@@ -17,13 +17,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>mytitle</title>
-    <link href="http://www.hebeto.com/2019/08/15/mytitle/"/>
-    <id>http://www.hebeto.com/2019/08/15/mytitle/</id>
-    <published>2019-08-15T09:44:12.000Z</published>
-    <updated>2019-08-15T09:44:12.370Z</updated>
+    <title>基于keras深度学习识别奇偶数</title>
+    <link href="http://www.hebeto.com/2019/08/15/keras/"/>
+    <id>http://www.hebeto.com/2019/08/15/keras/</id>
+    <published>2019-08-15T15:19:36.000Z</published>
+    <updated>2019-08-15T15:39:00.833Z</updated>
     
     <summary type="html">
+    
+      &lt;p&gt;​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基&lt;a href=&quot;https://github.com/tensorflow/tensorflow&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Tensorflow&lt;/a&gt;、&lt;a href=&quot;https://github.com/Theano/Theano&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Theano&lt;/a&gt;以及&lt;a href=&quot;https://github.com/Microsoft/cntk&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CNTK&lt;/a&gt;后端。&lt;/p&gt;
     
     </summary>
     
@@ -31,49 +33,36 @@
   </entry>
   
   <entry>
-    <title>article title</title>
-    <link href="http://www.hebeto.com/2019/08/05/article-title/"/>
-    <id>http://www.hebeto.com/2019/08/05/article-title/</id>
-    <published>2019-08-05T15:37:03.000Z</published>
-    <updated>2019-08-05T15:37:03.874Z</updated>
+    <title>第一篇文章终于发布啦!</title>
+    <link href="http://www.hebeto.com/2019/08/15/MyFirstTitle/"/>
+    <id>http://www.hebeto.com/2019/08/15/MyFirstTitle/</id>
+    <published>2019-08-15T14:48:29.000Z</published>
+    <updated>2019-08-15T15:16:15.019Z</updated>
     
     <summary type="html">
+    
+      &lt;h1 id=&quot;我的博客简介&quot;&gt;&lt;a href=&quot;#我的博客简介&quot; class=&quot;headerlink&quot; title=&quot;我的博客简介&quot;&gt;&lt;/a&gt;我的博客简介&lt;/h1&gt;&lt;p&gt;​    2019年8月，终于搭建起自己基于百度、百度、百度（说三遍）的博客，哈哈哈哈。&lt;/p&gt;
     
     </summary>
     
     
-  </entry>
-  
-  <entry>
-    <title>New Post</title>
-    <link href="http://www.hebeto.com/2019/08/05/New-Post/"/>
-    <id>http://www.hebeto.com/2019/08/05/New-Post/</id>
-    <published>2019-08-05T11:58:22.000Z</published>
-    <updated>2019-08-05T11:58:22.613Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
+      <category term="daily" scheme="http://www.hebeto.com/tags/daily/"/>
     
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://www.hebeto.com/2019/08/05/hello-world/"/>
-    <id>http://www.hebeto.com/2019/08/05/hello-world/</id>
-    <published>2019-08-04T17:24:07.353Z</published>
-    <updated>2019-08-04T17:24:07.353Z</updated>
+    <title>利用缓存区漏洞执行shellcode</title>
+    <link href="http://www.hebeto.com/2019/08/15/shellcode/"/>
+    <id>http://www.hebeto.com/2019/08/15/shellcode/</id>
+    <published>2019-08-15T14:47:28.000Z</published>
+    <updated>2019-08-15T15:39:26.922Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
-        
-      
+      &lt;p&gt;本文链接：&lt;a href=&quot;https://blog.csdn.net/qq_38919714/article/details/79249424&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/qq_38919714/article/details/79249424&lt;/a&gt;&lt;br&gt;环境：win10&lt;/p&gt;
+&lt;p&gt;工具：vc++6&lt;/p&gt;
+&lt;p&gt;原理介绍：&lt;/p&gt;
+&lt;p&gt; 栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。&lt;/p&gt;
     
     </summary>
     

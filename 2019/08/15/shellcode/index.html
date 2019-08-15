@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="我和你本应该，各自好各自坏">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://www.hebeto.com/tags/index.html">
+<meta name="description" content="本文链接：https://blog.csdn.net/qq_38919714/article/details/79249424环境：win10 工具：vc++6 原理介绍：  栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用缓存区漏洞执行shellcode">
+<meta property="og:url" content="http://www.hebeto.com/2019/08/15/shellcode/index.html">
 <meta property="og:site_name" content="南南瓜瓜瓜の博客">
-<meta property="og:description" content="我和你本应该，各自好各自坏">
+<meta property="og:description" content="本文链接：https://blog.csdn.net/qq_38919714/article/details/79249424环境：win10 工具：vc++6 原理介绍：  栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T13:25:44.322Z">
+<meta property="og:updated_time" content="2019-08-15T15:39:26.922Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
-<meta name="twitter:description" content="我和你本应该，各自好各自坏">
+<meta name="twitter:title" content="利用缓存区漏洞执行shellcode">
+<meta name="twitter:description" content="本文链接：https://blog.csdn.net/qq_38919714/article/details/79249424环境：win10 工具：vc++6 原理介绍：  栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。">
 
 
 
@@ -121,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.hebeto.com/tags/">
+  <link rel="canonical" href="http://www.hebeto.com/2019/08/15/shellcode/">
 
 
 
 
 
-  <title>标签 | 南南瓜瓜瓜の博客</title>
+  <title>利用缓存区漏洞执行shellcode | 南南瓜瓜瓜の博客</title>
   
 
 
@@ -242,33 +242,189 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hebeto.com/2019/08/15/shellcode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="南南瓜瓜瓜">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/header1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="南南瓜瓜瓜の博客">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">利用缓存区漏洞执行shellcode</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-15T22:47:28+08:00">
+                2019-08-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>本文链接：<a href="https://blog.csdn.net/qq_38919714/article/details/79249424" target="_blank" rel="noopener">https://blog.csdn.net/qq_38919714/article/details/79249424</a><br>环境：win10</p>
+<p>工具：vc++6</p>
+<p>原理介绍：</p>
+<p> 栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。<a id="more"></a>几个常见的寄存器，ebp栈底指针，esp栈顶指针，eip下一条计算机执行的指令，计算机中真正的存储方式如下图：</p>
+<p>  原理介绍：eip寄存器里存储的是CPU下次要执行的指令的地址。eip在内存中位于ebp后4个字节（如下图，vc的调试）。</p>
+<p>  一个函数调用结束时，也就是在退栈过程中，返回地址会被传给eip，这一点非常重要。当返回地址被我们溢出的数据覆盖的时候，就可以控制eip，从而获得计算机的控制权，所以我们只需要让覆盖返回地址的数据恰好为shellcode的地址，就可以执行自己的shellcode了。</p>
+<p> 我提前写好了代码，先看主函数，定义了一个字符串shellcode用来溢出，将它传入overflow（）函数，在overflow（）函数中</p>
+<p>利用strcpy（）函数进行溢出，对数据进行填充。还有一个从头到尾都没有调用的函数calc（）函数，它可以打开电脑的计算器</p>
+<p>#include&lt;stdio.h&gt;</p>
+<p>#include&lt;string.h&gt;</p>
+<p>#include&lt;windows.h&gt;</p>
+<p>void calc(){</p>
+<p>  system(“calc”);</p>
+<p>  exit(0);//防止程序崩溃</p>
+<p>}</p>
+<p>int overflow(char *shellcode) </p>
+<p>{ </p>
+<p>char str[4]=””;</p>
+<p>  strcpy(str,shellcode);</p>
+<p>  return 0;</p>
+<p>}  </p>
+<p>int main() </p>
+<p>{ </p>
+<p> char shellcode[]=”aaaaaaaa\x05\x10\x40\x00”;</p>
+<p> overflow(shellcode);</p>
+<p> //calc();</p>
+<p> return 0; </p>
+<p>}</p>
+<p>以前的文章搬过来，继续水…</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="南南瓜瓜瓜 WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/15/MyFirstTitle/" rel="prev" title="第一篇文章终于发布啦!">
+                第一篇文章终于发布啦! <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
