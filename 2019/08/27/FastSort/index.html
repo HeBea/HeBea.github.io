@@ -88,13 +88,13 @@
 <meta property="og:site_name" content="南南瓜瓜瓜の博客">
 <meta property="og:description" content="快速排序算法​    快速排序是对冒泡排序的一种改进，冒泡排序时间复杂度为O(N²)，而快排的时间复杂度则是O(N*log N)。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://www.hebeto.com/.com//Bubble1.png">
-<meta property="og:image" content="http://www.hebeto.com/.com//Fast1.png">
-<meta property="og:updated_time" content="2019-08-27T14:20:00.071Z">
+<meta property="og:image" content="http://www.hebeto.com/Bubble1.png">
+<meta property="og:image" content="http://www.hebeto.com/Fast1.png">
+<meta property="og:updated_time" content="2019-08-27T14:35:18.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序算法">
 <meta name="twitter:description" content="快速排序算法​    快速排序是对冒泡排序的一种改进，冒泡排序时间复杂度为O(N²)，而快排的时间复杂度则是O(N*log N)。">
-<meta name="twitter:image" content="http://www.hebeto.com/.com//Bubble1.png">
+<meta name="twitter:image" content="http://www.hebeto.com/Bubble1.png">
 
 
 
@@ -332,7 +332,7 @@
 <p> C语言代码</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">FastSort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> leftIndex, <span class="keyword">int</span> rightIndex)</span></span>&#123;</span><br><span class="line">    <span class="comment">//快速排序 升序 </span></span><br><span class="line">    <span class="keyword">if</span>(leftIndex &gt; rightIndex) <span class="comment">//递归停止条件</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> i = leftIndex;      <span class="comment">//左哨兵</span></span><br><span class="line">    <span class="keyword">int</span> j = rightIndex;     <span class="comment">//右哨兵</span></span><br><span class="line">    <span class="keyword">int</span> ref = a[leftIndex];<span class="comment">//基准数</span></span><br><span class="line">    <span class="keyword">int</span> temp;</span><br><span class="line">    <span class="comment">//每次把数组a[]中比temp小的数全放在左边 </span></span><br><span class="line">    <span class="comment">//比temp大的数放右边</span></span><br><span class="line">    <span class="comment">//循环至 i == j</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)&#123;  </span><br><span class="line">        <span class="comment">//从数组的右边开始，向左探测，找一个比基准小的数</span></span><br><span class="line">        <span class="keyword">while</span> (a[j] &gt;= ref &amp;&amp; i &lt; j)&#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//从数组的左边开始，向右探测，找一个比基准大的数</span></span><br><span class="line">        <span class="keyword">while</span> (a[i] &lt;= ref &amp;&amp; i &lt; j)&#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//若两个哨兵未相遇，交换找到的两个数</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; j)&#123;</span><br><span class="line">            temp = a[i];</span><br><span class="line">            a[i] = a[j];</span><br><span class="line">            a[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//基准数与中间数交换</span></span><br><span class="line">    a[leftIndex] = a[i];</span><br><span class="line">    a[i] = ref;</span><br><span class="line">    FastSort(a, leftIndex, i<span class="number">-1</span>);   </span><br><span class="line">    FastSort(a, i+<span class="number">1</span>, rightIndex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​    程序中有注释，稍加斟酌即可参透。值得一提的是，用递归实现快排，只要稍微改动判断条件，就可以由原来的升序变为降序。将程序中加下划线的两个判断条件”&lt;=”改为” &gt;=”  ， “&gt;=” 改为”&lt;=”，即可实现降序排列。</p>
+<p>​    程序中有注释，稍加斟酌即可参透。值得一提的是，用递归实现快排，只要稍微改动判断条件，就可以由原来的升序变为降序。将程序中的两个判断条件18行”&lt;=”改为” &gt;=”  ，14行 “&gt;=” 改为”&lt;=”，即可实现降序排列。</p>
 <h2 id="快速排序与冒泡排序的速度对比"><a href="#快速排序与冒泡排序的速度对比" class="headerlink" title="快速排序与冒泡排序的速度对比"></a>快速排序与冒泡排序的速度对比</h2><p>经典的冒泡排序算法(简单、代码少、容易理解)</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BubbleSort</span><span class="params">(<span class="keyword">int</span> *a, <span class="keyword">int</span> len)</span></span>&#123;</span><br><span class="line">    <span class="comment">//冒泡排序 len为数组a的长度</span></span><br><span class="line">    <span class="keyword">int</span> i,j,temp;</span><br><span class="line">    <span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> - i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (a[j] &gt; a[j+<span class="number">1</span>])&#123;</span><br><span class="line">                temp = a[j];</span><br><span class="line">                a[j] = a[j+<span class="number">1</span>];</span><br><span class="line">                a[j+<span class="number">1</span>] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -341,9 +341,9 @@
 
 <p>结果一个冒泡排序花了33681毫秒，而快速排序只用了30毫秒。</p>
 <p>冒泡排序：</p>
-<p><img src="/.com//Bubble1.png" alt="冒泡排序"></p>
+<p><img src="/Bubble1.png" alt="1"></p>
 <p>快速排序：</p>
-<p><img src="/.com//Fast1.png" alt="Fast1"></p>
+<p><img src="/Fast1.png" alt="2"></p>
 
       
     </div>
