@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="南南瓜瓜瓜の博客">
 <meta property="og:description" content="​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T15:39:00.833Z">
+<meta property="og:updated_time" content="2019-08-27T14:14:35.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于keras深度学习识别奇偶数">
 <meta name="twitter:description" content="​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基Tensorflow、Theano以及CNTK后端。">
@@ -321,23 +321,9 @@
 
       
         <p>​    Keras是一个高层神经网络API，Keras由纯Python编写而成并基<a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">Tensorflow</a>、<a href="https://github.com/Theano/Theano" target="_blank" rel="noopener">Theano</a>以及<a href="https://github.com/Microsoft/cntk" target="_blank" rel="noopener">CNTK</a>后端。<a id="more"></a>Keras 为支持快速实验而生，能够把你的idea迅速转换为结果。Keras的优点是友好、快速，官方说5分钟上手，（不知道是上手到啥程度，反正我是5分钟官方介绍都没看完）水几篇文章先，免得尴尬。</p>
-<p>‘’’</p>
-<p>from keras.models import Sequential<br>from keras.layers import Dense<br>import numpy as np</p>
-<p>x_data = []<br>y_data = []</p>
-<p>#生成训练数据<br>for i in range(256):<br>    if i % 2 == 0:<br>        y_data.append(0)<br>    else:<br>        y_data.append(1)<br>    temp = []<br>    for j in range(8):<br>        temp.append(i&amp;0x01)<br>        i = i &gt;&gt; 1<br>    x_data.append(temp)<br>x_train = np.array(x_data)<br>y_train = np.array(y_data).T</p>
-<p>#最简单的序贯模型，序贯模型是多个网络层的线性堆叠<br>simple_model=Sequential()</p>
-<p>#dense层为全连接层</p>
-<p>#第一层隐含层为全连接层 5个神经元 输入数据的维度为8<br>simple_model.add(Dense(5,input_dim=8,activation=’relu’))</p>
-<p>#第二个隐含层 4个神经元<br>simple_model.add(Dense(2,activation=’relu’))</p>
-<p>#输出层为1个神经元<br>simple_model.add(Dense(1,activation=’sigmoid’))</p>
-<p>#编译模型,训练模型之前需要编译模型</p>
-<p>#编译模型的三个参数：优化器、损失函数、指标列表<br>simple_model.compile(optimizer=’sgd’,loss=’mean_squared_error’)</p>
-<p>#训练网络 2000次</p>
-<p>#Keras以Numpy数组作为输入数据和标签的数据类型。训练模型一般使用fit函数<br>simple_model.fit(x_train,y_train,epochs=1000)</p>
-<p>#应用模型 进行预测</p>
-<p>while True:<br>    #输入一个0-255的数 判别其奇偶性<br>    print(“input:”)<br>    test = int(input())<br>    t = test<br>    test_list = []<br>    for i in range(8):<br>        test_list.append(test &amp; 0x01)<br>        test = test &gt;&gt; 1<br>    #print(test_list)<br>    #输入为二维列表<br>    l = []<br>    l.append(test_list)<br>    result = simple_model.predict_classes(np.array(l))<br>    if result[0] == 0:<br>        print(“结果：” +str(t)+”是偶数”)<br>    else:<br>        print(“结果：” +str(t)+”是奇数”)</p>
-<p>‘’’</p>
-<p>排版后面在改吧，0-255的数识别其奇偶性，输入更大的也可以识别出来（因为只取输入的低8位），深度学习用来识别奇偶数是不是有点大材小用了…</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> keras.models <span class="keyword">import</span> Sequential</span><br><span class="line"><span class="keyword">from</span> keras.layers <span class="keyword">import</span> Dense</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x_data = []</span><br><span class="line">y_data = []</span><br><span class="line"></span><br><span class="line"><span class="comment">#生成训练数据</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">256</span>):</span><br><span class="line">    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">        y_data.append(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        y_data.append(<span class="number">1</span>)</span><br><span class="line">    temp = []</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">        temp.append(i&amp;<span class="number">0x01</span>)</span><br><span class="line">        i = i &gt;&gt; <span class="number">1</span></span><br><span class="line">    x_data.append(temp)</span><br><span class="line">x_train = np.array(x_data)</span><br><span class="line">y_train = np.array(y_data).T</span><br><span class="line"></span><br><span class="line"><span class="comment">#最简单的序贯模型，序贯模型是多个网络层的线性堆叠</span></span><br><span class="line">simple_model=Sequential()</span><br><span class="line"><span class="comment">#dense层为全连接层</span></span><br><span class="line"><span class="comment">#第一层隐含层为全连接层 5个神经元 输入数据的维度为8</span></span><br><span class="line">simple_model.add(Dense(<span class="number">5</span>,input_dim=<span class="number">8</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="comment">#第二个隐含层 4个神经元</span></span><br><span class="line">simple_model.add(Dense(<span class="number">2</span>,activation=<span class="string">'relu'</span>))</span><br><span class="line"><span class="comment">#输出层为1个神经元</span></span><br><span class="line">simple_model.add(Dense(<span class="number">1</span>,activation=<span class="string">'sigmoid'</span>))</span><br><span class="line"><span class="comment">#编译模型,训练模型之前需要编译模型</span></span><br><span class="line"><span class="comment">#编译模型的三个参数：优化器、损失函数、指标列表</span></span><br><span class="line">simple_model.compile(optimizer=<span class="string">'sgd'</span>,loss=<span class="string">'mean_squared_error'</span>)</span><br><span class="line"><span class="comment">#训练网络 2000次</span></span><br><span class="line"><span class="comment">#Keras以Numpy数组作为输入数据和标签的数据类型。训练模型一般使用fit函数</span></span><br><span class="line">simple_model.fit(x_train,y_train,epochs=<span class="number">1000</span>)</span><br><span class="line"><span class="comment">#应用模型 进行预测</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="comment">#输入一个0-255的数 判别其奇偶性</span></span><br><span class="line">    print(<span class="string">"input:"</span>)</span><br><span class="line">    test = int(input())</span><br><span class="line">    t = test</span><br><span class="line">    test_list = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">8</span>):</span><br><span class="line">        test_list.append(test &amp; <span class="number">0x01</span>)</span><br><span class="line">        test = test &gt;&gt; <span class="number">1</span></span><br><span class="line">    <span class="comment">#print(test_list)</span></span><br><span class="line">    <span class="comment">#输入为二维列表</span></span><br><span class="line">    l = []</span><br><span class="line">    l.append(test_list)</span><br><span class="line">    result = simple_model.predict_classes(np.array(l))</span><br><span class="line">    <span class="keyword">if</span> result[<span class="number">0</span>] == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">"结果："</span> +str(t)+<span class="string">"是偶数"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">"结果："</span> +str(t)+<span class="string">"是奇数"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>​    排版后面在改吧，0-255的数识别其奇偶性，输入更大的也可以识别出来（因为只取输入的低8位），深度学习用来识别奇偶数是不是有点大材小用了…</p>
 
       
     </div>
@@ -396,8 +382,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/08/26/DFS/" rel="prev" title="DFS">
-                DFS <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/27/FastSort/" rel="prev" title="快速排序算法">
+                快速排序算法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -468,7 +454,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

