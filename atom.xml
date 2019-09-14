@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hebeto.com/"/>
-  <updated>2019-08-27T14:35:18.990Z</updated>
+  <updated>2019-09-14T04:34:02.793Z</updated>
   <id>http://www.hebeto.com/</id>
   
   <author>
@@ -17,11 +17,65 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在线工具集合</title>
+    <link href="http://www.hebeto.com/2019/09/14/ToolsOnline/"/>
+    <id>http://www.hebeto.com/2019/09/14/ToolsOnline/</id>
+    <published>2019-09-14T04:27:40.000Z</published>
+    <updated>2019-09-14T04:34:02.793Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;在线转换格式&lt;br&gt;&lt;a href=&quot;https://cn.office-converter.com/CDR-to-JPG&quot; target=&quot;_blank&quot;
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>华为面试相关</title>
+    <link href="http://www.hebeto.com/2019/09/14/huawei/"/>
+    <id>http://www.hebeto.com/2019/09/14/huawei/</id>
+    <published>2019-09-14T03:25:21.000Z</published>
+    <updated>2019-09-14T04:26:17.624Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;面试注意事项&quot;&gt;&lt;a href=&quot;#面试注意事项&quot; class=&quot;headerlink&quot; title=&quot;面试注意事项&quot;&gt;&lt;/a&gt;面试注意事项&lt;/h2&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>深度优先算法实现数的排列</title>
+    <link href="http://www.hebeto.com/2019/09/10/DFS/"/>
+    <id>http://www.hebeto.com/2019/09/10/DFS/</id>
+    <published>2019-09-10T08:23:29.000Z</published>
+    <updated>2019-09-14T03:23:24.049Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;深度优先搜索-DFS&quot;&gt;&lt;a href=&quot;#深度优先搜索-DFS&quot; class=&quot;headerlink&quot; title=&quot;深度优先搜索-DFS&quot;&gt;&lt;/a&gt;深度优先搜索-DFS&lt;/h1&gt;&lt;h2 id=&quot;1-简介&quot;&gt;&lt;a href=&quot;#1-简介&quot; class=&quot;headerlink&quot; title=&quot;1. 简介&quot;&gt;&lt;/a&gt;1. 简介&lt;/h2&gt;&lt;p&gt;​    深度优先搜索属于图算法的一种，英文缩写为DFS即Depth First Search.其过程简要来说是对每一个可能的分支路径深入到不能再深入为止，而且每个节点只能访问一次。&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>快速排序算法</title>
     <link href="http://www.hebeto.com/2019/08/27/FastSort/"/>
     <id>http://www.hebeto.com/2019/08/27/FastSort/</id>
     <published>2019-08-27T02:25:55.000Z</published>
-    <updated>2019-08-27T14:35:18.990Z</updated>
+    <updated>2019-08-27T14:44:07.834Z</updated>
     
     <summary type="html">
     
